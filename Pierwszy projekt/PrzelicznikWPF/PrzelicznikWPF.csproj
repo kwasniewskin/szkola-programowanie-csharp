@@ -7,9 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="bazaPrzelicznik.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="bazaPrzelicznik.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Model\BazaDanych\Migrations\" />
-    <Folder Include="Model\Repository\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +27,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UtilitisWPF\UtilitisWPF.csproj" />
   </ItemGroup>
 
 </Project>

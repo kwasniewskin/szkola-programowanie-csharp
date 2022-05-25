@@ -4,12 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrzelicznikWPF"
+        xmlns:viewModel="clr-namespace:PrzelicznikWPF.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" FontSize="20">
+    <Window.DataContext>
+        <viewModel:DBDaneVM/>
+    </Window.DataContext>
     <StackPanel>
         <Label Content="Rodzaj"/>
-        <ComboBox x:Name="comboBoxRodzaj" />
-        <Label Content="Jednostka źrodłowa"/>
+        <ComboBox x:Name="comboBoxRodzaj" ItemsSource="{Binding ListaRodzaj}" 
+                  SelectedItem="{Binding wybranyRodzaj}" IsEditable="False">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Nazwa}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+            <Label Content="Jednostka źrodłowa"/>
         <ComboBox x:Name="comboBoxJednostkaZrodlowa" />
         <Label Content="Jednostka docelowa"/>
         <ComboBox x:Name="comboBoxJednostkaDocelowa" />
@@ -19,7 +30,7 @@
             <Button Content="Przelicz"/>
         </StackPanel>
         <Label Content="Wynik:" FontSize="30"/>
-
+        <Label Content=" " />
 
     </StackPanel>
 </Window>
