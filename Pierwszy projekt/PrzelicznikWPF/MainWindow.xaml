@@ -1,0 +1,25 @@
+﻿<Window x:Class="PrzelicznikWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrzelicznikWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" FontSize="20">
+    <StackPanel>
+        <Label Content="Rodzaj"/>
+        <ComboBox x:Name="comboBoxRodzaj" />
+        <Label Content="Jednostka źrodłowa"/>
+        <ComboBox x:Name="comboBoxJednostkaZrodlowa" />
+        <Label Content="Jednostka docelowa"/>
+        <ComboBox x:Name="comboBoxJednostkaDocelowa" />
+        <Label Content="Wartość"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="400"/>
+            <Button Content="Przelicz"/>
+        </StackPanel>
+        <Label Content="Wynik:" FontSize="30"/>
+
+
+    </StackPanel>
+</Window>
