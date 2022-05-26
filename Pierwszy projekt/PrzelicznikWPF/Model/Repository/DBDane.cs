@@ -21,6 +21,13 @@ namespace PrzelicznikWPF.Model.Repository
             return bazaDanych.Rodzaj.ToList();
         }
 
+        public List<Jednostki> GetJednostki(Rodzaj rodzaj)
+        {
+            return bazaDanych.Jednostki
+                .Where((Jednostki j) => j.RodzajId == rodzaj.Id)
+                .ToList();
+        }
+
         #region Uzupelnianie Bazy Danych
         private void UzupelnianieBazyDanych()
         {

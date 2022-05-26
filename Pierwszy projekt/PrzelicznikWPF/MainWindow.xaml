@@ -13,7 +13,7 @@
     <StackPanel>
         <Label Content="Rodzaj"/>
         <ComboBox x:Name="comboBoxRodzaj" ItemsSource="{Binding ListaRodzaj}" 
-                  SelectedItem="{Binding wybranyRodzaj}" IsEditable="False">
+                  SelectedItem="{Binding WybranyRodzaj}" IsEditable="False">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Nazwa}"/>
@@ -21,13 +21,27 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
             <Label Content="Jednostka źrodłowa"/>
-        <ComboBox x:Name="comboBoxJednostkaZrodlowa" />
+        <ComboBox x:Name="comboBoxJednostkaZrodlowa" ItemsSource="{Binding ListaJednostka}"
+                  SelectedItem="{Binding WybranaJednostkaZ}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Nazwa}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Label Content="Jednostka docelowa"/>
-        <ComboBox x:Name="comboBoxJednostkaDocelowa" />
+        <ComboBox x:Name="comboBoxJednostkaDocelowa" ItemsSource="{Binding ListaJednostka}"
+                  SelectedItem="{Binding WybranaJednostkaD}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Nazwa}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Label Content="Wartość"/>
         <StackPanel Orientation="Horizontal">
-            <TextBox Width="400"/>
-            <Button Content="Przelicz"/>
+            <TextBox Width="400" Text="{Binding WporwadzonaDana}"/>
+            <Button Content="Przelicz" Command="{Binding Przelicz}"/>
         </StackPanel>
         <Label Content="Wynik:" FontSize="30"/>
         <Label Content=" " />

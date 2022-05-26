@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using UtilitisWPF;
 
 namespace PrzelicznikWPF.ViewModel
@@ -36,16 +37,132 @@ namespace PrzelicznikWPF.ViewModel
             {
                 _wybranyRodzaj = value;
                 OnPropertyChanged();
+                UzupelnianieComboBoxJednostkaZ();
+                UzupelnianieComboBoxJednostkaD();
             }
         }
 
+        private List<Jednostki> _listaJednostka;  
+        public List<Jednostki> ListaJednostka
+        {
+            get
+            {
+                return _listaJednostka;
+            }
+            set
+            { 
+                _listaJednostka = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Jednostki _wybranaJednostkaZ;
+        public Jednostki WybranaJednostkaZ
+        {
+            get
+            { 
+                return _wybranaJednostkaZ; 
+            }
+            set
+            {
+                _wybranaJednostkaZ = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Jednostki _wybranaJednostkaD;
+        public Jednostki WybranaJednostkaD
+        {
+            get
+            {
+                return _wybranaJednostkaD;
+            }
+            set
+            {
+                _wybranaJednostkaD = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _wprowadzonaDana;
+        public string WprowadzonaDana
+        {
+            get 
+            {
+                return _wprowadzonaDana; 
+            }
+            set
+            {
+                _wprowadzonaDana = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ICommand _przelicz; 
+        public ICommand Przelicz
+        {
+            get
+            {
+                if (_przelicz != null)
+                    _przelicz = new RelayCommand<object>(PrzeliczanieJednostek);
+
+                return _przelicz;
+            }
+        }
         public DBDaneVM()
         {
             dane = new DBDane();
+            UzupelnianieComboBoxow();
+        }
+
+
+        private void PrzeliczanieJednostek(object obj)
+        {
+            //Przeliczenie jednostek
+        }
+
+        private double StringToDouble(string wprowadzonaDana)
+        {
+            //Konwerter
+            return null;
+        }
+
+        #region Uzupelnianie ComboBoxow
+
+        private void UzupelnianieComboBoxow()
+        {
+            UzupelnianieComboBoxRodzaj();
+            UzupelnianieComboBoxJednostkaZ();
+            UzupelnianieComboBoxJednostkaD();
+        }
+
+        private void UzupelnianieComboBoxJednostkaZ()
+        {
+            ListaJednostka = dane.GetJednostki(WybranyRodzaj);
+
+            if (WybranaJednostkaZ == null)
+                WybranaJednostkaZ = ListaJednostka.FirstOrDefault();
+
+        }
+
+        private void UzupelnianieComboBoxJednostkaD()
+        {
+            ListaJednostka = dane.GetJednostki(WybranyRodzaj);
+
+            if (WybranaJednostkaD == null)
+                WybranaJednostkaD = ListaJednostka.FirstOrDefault();
+
+        }
+
+        private void UzupelnianieComboBoxRodzaj()
+        {
             ListaRodzaj = dane.GetRodzaje();
 
-            //if (WybranyRodzaj == null)
-            //    WybranyRodzaj = ListaRodzaj.First();
+            if (WybranyRodzaj == null)
+                WybranyRodzaj = ListaRodzaj.FirstOrDefault();
         }
+
+        #endregion
+
     }
 }
