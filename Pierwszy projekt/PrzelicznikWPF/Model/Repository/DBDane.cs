@@ -28,6 +28,13 @@ namespace PrzelicznikWPF.Model.Repository
                 .ToList();
         }
 
+        public Przeliczniki GetPrzelicznik(Jednostki jednostkaZrodlowa, Jednostki jednostkaDolecowa)
+        {
+            return bazaDanych.Przeliczniki
+                .Where(p => p.JednostkaZrodlowaId == jednostkaZrodlowa.Id && p.JednostkaDocelowaId == jednostkaDolecowa.Id)
+                .FirstOrDefault();
+        }
+
         #region Uzupelnianie Bazy Danych
         private void UzupelnianieBazyDanych()
         {

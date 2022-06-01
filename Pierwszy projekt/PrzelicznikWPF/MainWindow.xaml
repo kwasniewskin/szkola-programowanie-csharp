@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:PrzelicznikWPF"
         xmlns:viewModel="clr-namespace:PrzelicznikWPF.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" FontSize="20">
+        Title="MainWindow" Height="500" Width="800" FontSize="20">
     <Window.DataContext>
         <viewModel:DBDaneVM/>
     </Window.DataContext>
-    <StackPanel>
-        <Label Content="Rodzaj"/>
+    <StackPanel Margin="20">
+        <TextBlock Text="Rodzaj" HorizontalAlignment="Center" Margin="10, 0, 10, 10"/>
         <ComboBox x:Name="comboBoxRodzaj" ItemsSource="{Binding ListaRodzaj}" 
                   SelectedItem="{Binding WybranyRodzaj}" IsEditable="False">
             <ComboBox.ItemTemplate>
@@ -20,7 +20,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-            <Label Content="Jednostka źrodłowa"/>
+        <TextBlock Text="Jednostka źrodłowa" HorizontalAlignment="Center" Margin="10"/>
         <ComboBox x:Name="comboBoxJednostkaZrodlowa" ItemsSource="{Binding ListaJednostka}"
                   SelectedItem="{Binding WybranaJednostkaZ}">
             <ComboBox.ItemTemplate>
@@ -29,7 +29,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Label Content="Jednostka docelowa"/>
+        <TextBlock Text="Jednostka docelowa" HorizontalAlignment="Center" Margin="10"/>
         <ComboBox x:Name="comboBoxJednostkaDocelowa" ItemsSource="{Binding ListaJednostka}"
                   SelectedItem="{Binding WybranaJednostkaD}">
             <ComboBox.ItemTemplate>
@@ -38,13 +38,13 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Label Content="Wartość"/>
-        <StackPanel Orientation="Horizontal">
-            <TextBox Width="400" Text="{Binding WporwadzonaDana}"/>
+        <TextBlock Text="Wartość" HorizontalAlignment="Center" FontSize="20" Margin="10"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox Width="400" Text="{Binding WprowadzonaDana}"/>
             <Button Content="Przelicz" Command="{Binding Przelicz}"/>
         </StackPanel>
-        <Label Content="Wynik:" FontSize="30"/>
-        <Label Content=" " />
+        <TextBlock Text="Wynik😀:" FontSize="30" HorizontalAlignment="Center"/>
+        <TextBlock Text="{Binding Wynik}" FontSize="30" HorizontalAlignment="Center"/>
 
     </StackPanel>
 </Window>

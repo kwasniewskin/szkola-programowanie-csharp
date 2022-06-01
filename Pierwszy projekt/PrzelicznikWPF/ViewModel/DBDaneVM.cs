@@ -98,16 +98,32 @@ namespace PrzelicznikWPF.ViewModel
             }
         }
 
+        private string _wynik;
+        public string Wynik
+        {
+            get 
+            { 
+                return _wynik;
+            }
+            set 
+            { 
+                _wynik = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         private ICommand _przelicz; 
         public ICommand Przelicz
         {
             get
             {
-                if (_przelicz != null)
+                if (_przelicz == null) 
                     _przelicz = new RelayCommand<object>(PrzeliczanieJednostek);
 
                 return _przelicz;
             }
+
         }
         public DBDaneVM()
         {
@@ -115,17 +131,30 @@ namespace PrzelicznikWPF.ViewModel
             UzupelnianieComboBoxow();
         }
 
-
         private void PrzeliczanieJednostek(object obj)
         {
-            //Przeliczenie jednostek
+            
+            if(WybranaJednostkaZ != WybranaJednostkaD) 
+            {
+                if (double.TryParse(WprowadzonaDana, out double wprowadzonaWartoscDouble))
+                {
+                    double przelicznik = dane.GetPrzelicznik(WybranaJednostkaZ, WybranaJednostkaD).Wartosc;
+                    string symbol = WybranaJednostkaD.Symbol;
+
+                    wprowadzonaWartoscDouble = wprowadzonaWartoscDouble * przelicznik;
+                    Wynik = wprowadzonaWartoscDouble + " " + symbol;
+                }
+                else
+                {
+                    Wynik = "Wprowadz liczbe!";
+                }
+            } 
+            else
+            {
+                Wynik = "Wybrano dwie takie same jednostki";
+            }
         }
 
-        private double StringToDouble(string wprowadzonaDana)
-        {
-            //Konwerter
-            return null;
-        }
 
         #region Uzupelnianie ComboBoxow
 
