@@ -17,15 +17,21 @@ namespace WalidacjaImieWiek
             this.imie = imie;
         }
         
-        public bool CzyWalidacjaPrzebieglaPoprawnie()
+        public bool CzyUzupelnionoPoleImie()
         {
-            if (string.IsNullOrEmpty(imie))
-            {
-                message = "Nie podano imienia ";
+            if (string.IsNullOrWhiteSpace(imie))
                 return false;
-            }
 
             return true;
+        }
+
+        public bool CzyWalidacjaPrzebieglaPoprawnie()
+        {
+            if (CzyUzupelnionoPoleImie())
+                return true;
+
+            message = "Nie podano imienia ";
+            return false;
         }
 
         public string GetMessage()

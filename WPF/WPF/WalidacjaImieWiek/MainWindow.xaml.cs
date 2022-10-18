@@ -88,17 +88,18 @@ namespace WalidacjaImieWiek
             InitializeComponent();
         }
 
-        private void WyswietlanieBledow(string blad)
+        private void CzyszczenieTextBlockow()
         {
-            CzyPoprawneDane.Text = blad;
-            CzyPoprawneDane.Foreground = Brushes.Red;
+            CzyPoprawneDane.Text = "";
+            CzyPelnoletni.Text = "";
         }
 
-        private void WyswietlanieBledowBindowanie(string blad)
+        private void CzyszczenieTextBlockowBindowanie()
         {
-            CzyPoprawne = blad;
-            Color = Brushes.Red;
+            CzyPoprawne = "";
+            CzyLetni = "";
         }
+
 
         private bool CzyPelnoletniMethod(string wiek)
         {
@@ -114,6 +115,20 @@ namespace WalidacjaImieWiek
             }
         }
 
+
+        private void WyswietlanieBledow(string blad)
+        {
+            CzyPoprawneDane.Text = blad;
+            CzyPoprawneDane.Foreground = Brushes.Red;
+        }
+
+        private void WyswietlanieBledowBindowanie(string blad)
+        {
+            CzyPoprawne = blad;
+            Color = Brushes.Red;
+        }
+
+
         private void WyswietlanieDanych(string imie, string wiek)
         {
             CzyPoprawneDane.Text = $"Witaj! {imie}";
@@ -128,17 +143,6 @@ namespace WalidacjaImieWiek
             CzyLetni = CzyPelnoletniMethod(wiek) ? "Pelnoletni" : "Niepelnoletni";
         }
 
-        private void CzyszczenieTextBlockow()
-        {
-            CzyPoprawneDane.Text = "";
-            CzyPelnoletni.Text = "";
-        }
-
-        private void CzyszczenieTextBlockowBindowanie()
-        {
-            CzyPoprawne = "";
-            CzyLetni = "";
-        }
 
         private void Sprawdz_Click(object sender, RoutedEventArgs e)
         {

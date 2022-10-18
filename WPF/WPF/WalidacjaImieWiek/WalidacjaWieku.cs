@@ -17,24 +17,43 @@ namespace WalidacjaImieWiek
             this.wiek = wiek;
         }
 
-        public bool CzyPoprawnieUzupelnionoPoleWiek()
-        {
-            if (int.TryParse(wiek, out int intWiek) && intWiek > 0 && intWiek < 150)
-                return true;
-
-            message = "Nie poprawnie uzupelniono pole wiek ";
-            return false;
-        }
-
         public bool CzyUzupelnionoPoleWiek()
         {
-            if (string.IsNullOrEmpty(wiek))
+            if (string.IsNullOrWhiteSpace(wiek))
             {
                 message = "Nie podano wieku ";
                 return false;
             }
 
             return true;
+        }
+
+        public bool CzyLiczbaJestIntem()
+        {
+            if (int.TryParse(wiek, out int intWiek))
+                return true;
+
+            message = "Liczba nie jest intem";
+            return false;
+        }
+
+        public bool CzyLiczbaJestWZakresie(int min, int max)
+        {
+            int.TryParse(wiek, out int intWiek);
+
+            if (intWiek > min && intWiek < max)
+                return true;
+
+            message = "Liczba nie jest w zakresie";
+            return false;
+        }
+
+        public bool CzyPoprawnieUzupelnionoPoleWiek()
+        {
+            if (CzyLiczbaJestIntem() && CzyLiczbaJestWZakresie(0,150))
+                return true;
+
+            return false;
         }
 
         public bool CzyWalidacjaPrzebieglaPoprawnie()
@@ -44,7 +63,6 @@ namespace WalidacjaImieWiek
 
             return false;
         }
-
 
         public string GetMessage()
         {
