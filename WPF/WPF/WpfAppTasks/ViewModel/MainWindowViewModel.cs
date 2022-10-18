@@ -25,7 +25,7 @@ namespace WpfAppTasks.ViewModel
         public int SecondValue
         {
             get { return secondValue; }
-            set { secondValue = value; OnPropertyChanged(); }
+            set { secondValue = value; OnPropertyChanged();}
         }
 
         private string _operationMessage;
@@ -133,6 +133,67 @@ namespace WpfAppTasks.ViewModel
                     });
                 }
                 return _taskSumTaskMessageCommand;
+            }
+        }
+
+        private ICommand _asyncSumCommand;
+        public ICommand AsyncSumCommand
+        {
+            get
+            {
+                if (_asyncSumCommand == null)
+                {
+                    _asyncSumCommand = new RelayCommand<object>(async arg =>
+                    {
+                        await Task.Run(() =>
+                        {
+                            int result = firstValue + secondValue;
+                            Thread.Sleep(10000);
+                            sumResult = result;
+                        }
+                        );
+
+                        OperationMessage = "Operacja zakonczona (z innego wątku)";
+                    });
+                }
+                return _asyncSumCommand;
+            }
+        }
+
+        object lockObject = new object();
+        private ICommand _sum_v2Command;
+        public ICommand Sum_v2Command
+        {
+            get
+            {
+                if (_sum_v2Command == null)
+                {
+                    _sum_v2Command = new RelayCommand<object>(arg =>
+                    {
+                        Task.Run(() =>
+                        {
+                            lock (lockObject)
+                            {
+                                int localValue = FirstValue;
+                                Thread.Sleep(500);
+                                localValue += 2;
+                                FirstValue = localValue;
+                            }
+                        });
+
+                        Task.Run(() =>
+                        {
+                            lock (lockObject)
+                            {
+                                int localValue = FirstValue;
+                                Thread.Sleep(500);
+                                localValue *= 2;
+                                FirstValue = localValue;
+                            }
+                        });
+                    });
+                }
+                return _sum_v2Command;
             }
         }
     }

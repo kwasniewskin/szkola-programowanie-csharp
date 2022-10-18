@@ -20,6 +20,8 @@
         <Button Content="Dodawanie" Margin="30,5,30,30" Command="{Binding SynchronousSumCommand}"></Button>
         <Button Content="Dodawanie w osobnym wątku" Margin="30,5,30,30" Command="{Binding TaskSumCommand}"></Button>
         <Button Content="Dodawanie w osobnym wątku 2" Margin="30,5,30,30" Command="{Binding TaskSumTaskMessageCommand}"></Button>
+        <Button Content="Dodawanie asynchroniczne z modyfikatorami" Margin="30,5,30,30" Command="{Binding AsyncSumCommand}"></Button>
+        <Button Content="Dwa wątki" Margin="30,5,30,30" Command="{Binding Sum_v2Command}"></Button>
     </StackPanel>
     
 </Window>

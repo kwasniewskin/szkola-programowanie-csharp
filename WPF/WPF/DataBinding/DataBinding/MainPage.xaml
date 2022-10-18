@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DataBinding.MainPage">
+
+    <StackLayout BindingContext="{x:Reference RotateSlider}" BackgroundColor="{Binding Value, StringFormat='hsl({0:F0},30,20)'}">
+        <Label  TextColor="{Binding Value,StringFormat='hsl({0:F0},100,50)'}" Text="{Binding Value, StringFormat='Obrót o kąt: {0:F2}'}" FontSize="50" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BindingContext="{x:Reference RotateSlider}"/>
+        <Slider x:Name="RotateSlider" Margin="10" Minimum="0" Maximum="360" BindingContext="{x:Reference RotateSlider}" 
+                MaximumTrackColor="{Binding Value,StringFormat='hsl({0:F0},100,50)'}" MinimumTrackColor="{Binding Value,StringFormat='hsl({0:F0},100,50)'}"
+                ThumbColor="white"/>
+        <Label Text="Drugi label" FontSize="50" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" BindingContext="{x:Reference RotateSlider}"
+               Rotation="{Binding Value}" TextColor="{Binding Value,StringFormat='hsl({0:F0},100,50)'}"/>
+        
+    </StackLayout>
+
+</ContentPage>

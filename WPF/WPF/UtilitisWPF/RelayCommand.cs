@@ -1,29 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace WPFUtilities
+namespace UtilitisWPF
 {
     public class RelayCommand<T> : ICommand
     {
         private Action<T> execute;
-        private Func<T, bool> canExecute;
+        private Func<T, bool> canExecute; 
 
-        public event EventHandler CanExecuteChanged 
+        public event EventHandler CanExecuteChanged
         {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RelayCommand(Action<T> execute, Func<T,bool> canExecute = null)
+        public RelayCommand(Action<T> execute, Func<T, bool> canExecute = null)
         {
             this.execute = execute;
             this.canExecute = canExecute;
+
         }
 
         public bool CanExecute(object parameter)
