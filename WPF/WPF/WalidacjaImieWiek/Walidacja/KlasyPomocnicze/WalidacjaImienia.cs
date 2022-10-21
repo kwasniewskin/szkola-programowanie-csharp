@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WalidacjaImieWiek
 {
-    class WalidacjaImienia : IWalidacja
+    class WalidacjaImienia : IWalidacjaPola
     {
         public string Message { get; set; }
         public string Imie { get; set; }
@@ -32,11 +32,6 @@ namespace WalidacjaImieWiek
 
             Message = "Nie podano imienia ";
             return false;
-        }
-
-        public string GetMessage()
-        {
-            return Message;
         }
 
     }

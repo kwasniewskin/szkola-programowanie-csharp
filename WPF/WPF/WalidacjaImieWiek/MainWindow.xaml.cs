@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -152,21 +153,41 @@ namespace WalidacjaImieWiek
             string imie = TextBoxImie.Text;
             string wiek = TextBoxWiek.Text;
 
-            if (Walidacja.Waliduj(imie, wiek, out string message))
+            IWalidacja walidacjaImienia = new WalidacjaImienia(imie);
+            IWalidacja walidacjaWieku = new WalidacjaWieku(wiek);
+
+            List<IWalidacja> listaWalidacji = new List<IWalidacja>();
+            listaWalidacji.Add(walidacjaImienia);
+            listaWalidacji.Add(walidacjaWieku);
+
+            Walidacja walidacja = new Walidacja(listaWalidacji);
+
+            if (walidacja.CzyWalidacjaPrzebieglaPoprawnie())
                 WyswietlanieDanych(imie, wiek);
             else
-                WyswietlanieBledow(message);
+                WyswietlanieBledow(walidacja.Message);
         }
 
         private void WywolajMetode(object parametr)
         {
+            
             CzyszczenieTextBlockowBindowanie();
             Color = Brushes.Black;
 
-            if (Walidacja.Waliduj(Imie, Wiek, out string message))
+            IWalidacja walidacjaImienia = new WalidacjaImienia(Imie);
+            IWalidacja walidacjaWieku = new WalidacjaWieku(Wiek);
+
+            List<IWalidacja> listaWalidacji = new List<IWalidacja>();
+            listaWalidacji.Add(walidacjaImienia);
+            listaWalidacji.Add(walidacjaWieku);
+
+            Walidacja walidacja = new Walidacja(listaWalidacji);
+
+            if (walidacja.CzyWalidacjaPrzebieglaPoprawnie())                                                           
                 WyswietlanieDanychBindowanie(Imie, Wiek);
             else
-                WyswietlanieBledowBindowanie(message);
+                WyswietlanieBledowBindowanie(walidacja.Message);
+            
         }
     }
 }

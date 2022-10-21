@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace WalidacjaImieWiek
 {
-    interface IWalidacja
+    interface IWalidacjaPola : IWalidacja
     {
-        string Message { get; set; }
-
         bool CzyUzupelnionoPole();
-
-        bool CzyWalidacjaPrzebieglaPoprawnie();
-
-        string GetMessage();
     }
 }
