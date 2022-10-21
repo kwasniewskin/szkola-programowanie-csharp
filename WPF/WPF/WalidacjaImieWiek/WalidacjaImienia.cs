@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace WalidacjaImieWiek
 {
-    class WalidacjaImienia
+    class WalidacjaImienia : IWalidacja
     {
-        private string message;
-        private string imie;
+        public string Message { get; set; }
+        public string Imie { get; set; }
 
         public WalidacjaImienia(string imie)
         {
-            message = "";
-            this.imie = imie;
+            Message = "";
+            this.Imie = imie;
         }
         
-        public bool CzyUzupelnionoPoleImie()
+        public bool CzyUzupelnionoPole()
         {
-            if (string.IsNullOrWhiteSpace(imie))
+            if (string.IsNullOrWhiteSpace(Imie))
                 return false;
 
             return true;
@@ -27,16 +27,16 @@ namespace WalidacjaImieWiek
 
         public bool CzyWalidacjaPrzebieglaPoprawnie()
         {
-            if (CzyUzupelnionoPoleImie())
+            if (CzyUzupelnionoPole())
                 return true;
 
-            message = "Nie podano imienia ";
+            Message = "Nie podano imienia ";
             return false;
         }
 
         public string GetMessage()
         {
-            return message;
+            return Message;
         }
 
     }

@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace WalidacjaImieWiek
 {
-    class WalidacjaWieku
+    class WalidacjaWieku : IWalidacja
     {
-        private string message;
-        private string wiek;
+        public string Message { get; set; }
+        public string Wiek { get; set; }
 
         public WalidacjaWieku(string wiek)
         {
-            message = "";
-            this.wiek = wiek;
+            Message = "";
+            this.Wiek = wiek;
         }
 
-        public bool CzyUzupelnionoPoleWiek()
+        public bool CzyUzupelnionoPole()
         {
-            if (string.IsNullOrWhiteSpace(wiek))
+            if (string.IsNullOrWhiteSpace(Wiek))
             {
-                message = "Nie podano wieku ";
+                Message = "Nie podano wieku ";
                 return false;
             }
 
@@ -30,21 +30,21 @@ namespace WalidacjaImieWiek
 
         public bool CzyLiczbaJestIntem()
         {
-            if (int.TryParse(wiek, out int intWiek))
+            if (int.TryParse(Wiek, out int intWiek))
                 return true;
 
-            message = "Liczba nie jest intem";
+            Message = "Liczba nie jest intem";
             return false;
         }
 
         public bool CzyLiczbaJestWZakresie(int min, int max)
         {
-            int.TryParse(wiek, out int intWiek);
+            int.TryParse(Wiek, out int intWiek);
 
             if (intWiek > min && intWiek < max)
                 return true;
 
-            message = "Liczba nie jest w zakresie";
+            Message = "Liczba nie jest w zakresie";
             return false;
         }
 
@@ -58,7 +58,7 @@ namespace WalidacjaImieWiek
 
         public bool CzyWalidacjaPrzebieglaPoprawnie()
         {
-            if (CzyUzupelnionoPoleWiek() && CzyPoprawnieUzupelnionoPoleWiek())
+            if (CzyUzupelnionoPole() && CzyPoprawnieUzupelnionoPoleWiek())
                 return true;
 
             return false;
@@ -66,7 +66,7 @@ namespace WalidacjaImieWiek
 
         public string GetMessage()
         {
-            return message;
+            return Message;
         }
     }
 }
