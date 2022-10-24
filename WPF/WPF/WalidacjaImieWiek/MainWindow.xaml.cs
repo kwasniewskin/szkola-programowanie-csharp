@@ -91,8 +91,8 @@ namespace WalidacjaImieWiek
 
         private void CzyszczenieTextBlockow()
         {
-            CzyPoprawneDane.Text = "";
-            CzyPelnoletni.Text = "";
+            TextBlockPoprawnoscDanych.Text = "";
+            TextBlockPelnoletnosc.Text = "";
         }
 
         private void CzyszczenieTextBlockowBindowanie()
@@ -119,22 +119,22 @@ namespace WalidacjaImieWiek
 
         private void WyswietlanieBledow(string blad)
         {
-            CzyPoprawneDane.Text = blad;
-            CzyPoprawneDane.Foreground = Brushes.Red;
+            TextBlockPoprawnoscDanych.Text = blad;
+            TextBlockPoprawnoscDanych.Foreground = Brushes.Red;
         }
 
         private void WyswietlanieBledowBindowanie(string blad)
+
         {
             CzyPoprawne = blad;
             Color = Brushes.Red;
         }
 
-
         private void WyswietlanieDanych(string imie, string wiek)
         {
-            CzyPoprawneDane.Text = $"Witaj! {imie}";
+            TextBlockPoprawnoscDanych.Text = $"Witaj! {imie}";
 
-            CzyPelnoletni.Text = CzyPelnoletniMethod(wiek) ? "Pelnoletni" : "Niepelnoletni";
+            TextBlockPelnoletnosc.Text = CzyPelnoletniMethod(wiek) ? "Pelnoletni" : "Niepelnoletni";
         }
 
         private void WyswietlanieDanychBindowanie(string imie, string wiek)
@@ -144,23 +144,17 @@ namespace WalidacjaImieWiek
             CzyLetni = CzyPelnoletniMethod(wiek) ? "Pelnoletni" : "Niepelnoletni";
         }
 
-
         private void Sprawdz_Click(object sender, RoutedEventArgs e)
         {
             CzyszczenieTextBlockow();
-            CzyPoprawneDane.Foreground = Brushes.Black;
+            TextBlockPoprawnoscDanych.Foreground = Brushes.Black;
 
             string imie = TextBoxImie.Text;
             string wiek = TextBoxWiek.Text;
 
-            IWalidacja walidacjaImienia = new WalidacjaImienia(imie);
-            IWalidacja walidacjaWieku = new WalidacjaWieku(wiek);
-
-            List<IWalidacja> listaWalidacji = new List<IWalidacja>();
-            listaWalidacji.Add(walidacjaImienia);
-            listaWalidacji.Add(walidacjaWieku);
-
-            Walidacja walidacja = new Walidacja(listaWalidacji);
+            Walidacja walidacja = new Walidacja();
+            walidacja.DodanieNowejWalidacji(new WalidacjaImienia(imie));
+            walidacja.DodanieNowejWalidacji(new WalidacjaWieku(wiek));
 
             if (walidacja.CzyWalidacjaPrzebieglaPoprawnie())
                 WyswietlanieDanych(imie, wiek);
@@ -174,14 +168,9 @@ namespace WalidacjaImieWiek
             CzyszczenieTextBlockowBindowanie();
             Color = Brushes.Black;
 
-            IWalidacja walidacjaImienia = new WalidacjaImienia(Imie);
-            IWalidacja walidacjaWieku = new WalidacjaWieku(Wiek);
-
-            List<IWalidacja> listaWalidacji = new List<IWalidacja>();
-            listaWalidacji.Add(walidacjaImienia);
-            listaWalidacji.Add(walidacjaWieku);
-
-            Walidacja walidacja = new Walidacja(listaWalidacji);
+            Walidacja walidacja = new Walidacja();
+            walidacja.DodanieNowejWalidacji(new WalidacjaImienia(Imie));
+            walidacja.DodanieNowejWalidacji(new WalidacjaWieku(Wiek));
 
             if (walidacja.CzyWalidacjaPrzebieglaPoprawnie())                                                           
                 WyswietlanieDanychBindowanie(Imie, Wiek);

@@ -13,8 +13,8 @@
         <TextBox x:Name="TextBoxWiek" Text="{Binding ElementName=OknoGlowne, Path=Wiek}"/>
         <Button x:Name="Sprawdz" Content="Sprawdz" Margin="0,10,0,5" Click="Sprawdz_Click"/>
         <Button x:Name="SprawdzBinding" Content="Sprawdz (Binding)" Command="{Binding ElementName=OknoGlowne, Path=SprawdzButtonCommand}"/>
-        <TextBlock x:Name="CzyPoprawneDane" Text="{Binding ElementName=OknoGlowne, Path=CzyPoprawne}" 
+        <TextBlock x:Name="TextBlockPoprawnoscDanych" Text="{Binding ElementName=OknoGlowne, Path=CzyPoprawne}" 
                    Foreground="{Binding ElementName=OknoGlowne, Path=Color}"/>
-        <TextBlock x:Name="CzyPelnoletni" Text="{Binding ElementName=OknoGlowne, Path=CzyLetni}"/>
+        <TextBlock x:Name="TextBlockPelnoletnosc" Text="{Binding ElementName=OknoGlowne, Path=CzyLetni}"/>
     </StackPanel>
 </Window>
