@@ -21,7 +21,7 @@ namespace WalidacjaImieWiek
         {
             if (string.IsNullOrWhiteSpace(Wiek))
             {
-                Message = "Nie podano wieku ";
+                Message = "Nie uzupelniono pola wiek ";
                 return false;
             }
 
@@ -33,7 +33,7 @@ namespace WalidacjaImieWiek
             if (int.TryParse(Wiek, out int intWiek))
                 return true;
 
-            Message = "Liczba nie jest intem";
+            Message = "Wprowadzona dana nie jest liczba calkowita";
             return false;
         }
 
@@ -44,7 +44,7 @@ namespace WalidacjaImieWiek
             if (intWiek > min && intWiek < max)
                 return true;
 
-            Message = "Liczba nie jest w zakresie";
+            Message = $"Liczba poza zakresem {min}-{max}";
             return false;
         }
 

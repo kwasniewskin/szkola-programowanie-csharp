@@ -11,11 +11,12 @@ namespace WalidacjaImieWiek
         private List<IWalidacja> listaWalidacji = new List<IWalidacja>();
         public string Message { get; set; }
 
+        public Walidacja() { }
+
         public Walidacja(List<IWalidacja> listaWalidacjiOtrzymana)
         {
             listaWalidacji = listaWalidacjiOtrzymana;
         }
-        public Walidacja() { }
 
         public void DodanieNowejWalidacji(IWalidacjaPola walidacja)
         {

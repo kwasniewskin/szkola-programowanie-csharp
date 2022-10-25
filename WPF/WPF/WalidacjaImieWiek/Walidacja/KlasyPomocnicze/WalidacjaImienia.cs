@@ -30,7 +30,7 @@ namespace WalidacjaImieWiek
             if (CzyUzupelnionoPole())
                 return true;
 
-            Message = "Nie podano imienia ";
+            Message = "Nie uzupelniono pola imie ";
             return false;
         }
 
