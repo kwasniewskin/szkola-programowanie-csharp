@@ -106,7 +106,7 @@ namespace WalidacjaImieWiek
         {
             int.TryParse(wiek, out int intWiek);
 
-            if (intWiek > 18)
+            if (intWiek >= 18)
             {
                 return true;
             }
@@ -147,7 +147,7 @@ namespace WalidacjaImieWiek
         private void Sprawdz_Click(object sender, RoutedEventArgs e)
         {
             CzyszczenieTextBlockow();
-            TextBlockPoprawnoscDanych.Foreground = Brushes.Black;
+            TextBlockPoprawnoscDanych.Foreground = Brushes.White;
 
             string imie = TextBoxImie.Text;
             string wiek = TextBoxWiek.Text;
@@ -156,7 +156,7 @@ namespace WalidacjaImieWiek
             walidacja.DodanieNowejWalidacji(new WalidacjaImienia(imie));
             walidacja.DodanieNowejWalidacji(new WalidacjaWieku(wiek));
 
-            if (walidacja.CzyWalidacjaPrzebieglaPoprawnie())
+            if (walidacja.Waliduj())
                 WyswietlanieDanych(imie, wiek);
             else
                 WyswietlanieBledow(walidacja.Message);
@@ -166,13 +166,13 @@ namespace WalidacjaImieWiek
         {
             
             CzyszczenieTextBlockowBindowanie();
-            Color = Brushes.Black;
+            Color = Brushes.White;
 
             Walidacja walidacja = new Walidacja();
             walidacja.DodanieNowejWalidacji(new WalidacjaImienia(Imie));
             walidacja.DodanieNowejWalidacji(new WalidacjaWieku(Wiek));
 
-            if (walidacja.CzyWalidacjaPrzebieglaPoprawnie())                                                           
+            if (walidacja.Waliduj())                                                           
                 WyswietlanieDanychBindowanie(Imie, Wiek);
             else
                 WyswietlanieBledowBindowanie(walidacja.Message);

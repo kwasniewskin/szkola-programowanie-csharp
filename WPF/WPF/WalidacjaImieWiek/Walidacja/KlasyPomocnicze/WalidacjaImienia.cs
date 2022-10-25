@@ -19,18 +19,18 @@ namespace WalidacjaImieWiek
         
         public bool CzyUzupelnionoPole()
         {
-            if (string.IsNullOrWhiteSpace(Imie))
-                return false;
+            if (!string.IsNullOrWhiteSpace(Imie))
+                return true;
 
-            return true;
+            Message = "Nie uzupelniono pola imie ";
+            return false;
         }
 
-        public bool CzyWalidacjaPrzebieglaPoprawnie()
+        public bool Waliduj()
         {
             if (CzyUzupelnionoPole())
                 return true;
 
-            Message = "Nie uzupelniono pola imie ";
             return false;
         }
 

@@ -56,7 +56,7 @@ namespace WalidacjaImieWiek
             return false;
         }
 
-        public bool CzyWalidacjaPrzebieglaPoprawnie()
+        public bool Waliduj()
         {
             if (CzyUzupelnionoPole() && CzyPoprawnieUzupelnionoPoleWiek())
                 return true;

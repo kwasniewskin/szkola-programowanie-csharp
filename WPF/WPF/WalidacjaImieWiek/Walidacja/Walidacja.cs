@@ -10,6 +10,7 @@ namespace WalidacjaImieWiek
     {
         private List<IWalidacja> listaWalidacji = new List<IWalidacja>();
         public string Message { get; set; }
+        public bool CzyWalidacjaPrzebieglaPoprawnie { get; set; }
 
         public Walidacja() { }
 
@@ -23,20 +24,23 @@ namespace WalidacjaImieWiek
             listaWalidacji.Add(walidacja);
         }
 
-        public bool CzyWalidacjaPrzebieglaPoprawnie()
+        public bool Waliduj()
         {
-            if (!listaWalidacji.Any(walidacja => walidacja.CzyWalidacjaPrzebieglaPoprawnie() == false)){
+            if (!listaWalidacji.Any(walidacja => walidacja.Waliduj() == false))
+            {
+                CzyWalidacjaPrzebieglaPoprawnie = true;
                 return true;
-            } else
+            }
+            else
             {
                 foreach (IWalidacja walidacja in listaWalidacji)
                 {
                     Message += walidacja.Message;
                 }
 
+                CzyWalidacjaPrzebieglaPoprawnie = false;
                 return false;
             }
-
         }
             
     }

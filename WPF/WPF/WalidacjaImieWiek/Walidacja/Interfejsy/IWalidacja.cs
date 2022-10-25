@@ -10,6 +10,6 @@ namespace WalidacjaImieWiek
     {
         string Message { get; set; }
 
-        bool CzyWalidacjaPrzebieglaPoprawnie();
+        bool Waliduj();
     }
 }
