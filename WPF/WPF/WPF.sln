@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WalidacjaImieWiek", "Walida
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilitisWPF", "UtilitisWPF\UtilitisWPF.csproj", "{3296897B-476A-4D43-81BA-38E1AF40357D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EgzaminZawodowyKonsola", "EgzaminZawodowyKonsola\EgzaminZawodowyKonsola.csproj", "{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -191,6 +193,18 @@ Global
 		{3296897B-476A-4D43-81BA-38E1AF40357D}.Release|iPhone.Build.0 = Release|Any CPU
 		{3296897B-476A-4D43-81BA-38E1AF40357D}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{3296897B-476A-4D43-81BA-38E1AF40357D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Release|iPhone.Build.0 = Release|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{C4FC4E67-E604-409D-9E7B-C414DBCDCE9C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
