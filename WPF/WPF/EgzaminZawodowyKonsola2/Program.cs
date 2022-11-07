@@ -38,7 +38,6 @@ namespace EgzaminZawodowyKonsola2
 
                 tablica[i] = liczba;
             }
-
         }
 
         /********************************************************************
