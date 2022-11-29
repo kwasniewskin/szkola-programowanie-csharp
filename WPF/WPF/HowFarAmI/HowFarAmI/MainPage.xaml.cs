@@ -38,7 +38,7 @@ namespace HowFarAmI
                 if (location != null)
                 {
                     double distance = Location.CalculateDistance(buskoZdroj, location, DistanceUnits.Kilometers);
-                    Result = $"Odleglosc od internatu: {Math.Round(distance, 2)} km";
+                    Result = $"Odleglosc od Buska: {Math.Round(distance, 2)} km";
                 }
                 await Task.Delay(TimeSpan.FromSeconds(1));
             }
