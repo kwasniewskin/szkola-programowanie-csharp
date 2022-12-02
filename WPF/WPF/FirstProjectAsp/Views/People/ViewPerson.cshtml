@@ -1,0 +1,11 @@
+﻿@model Person
+
+
+<h1>Witaj uzytkowniku: </h1>
+<p>Imie: @Model.Name</p> <br />
+<p>Nazwisko: @Model.Surname</p> <br />
+<p>
+    @Html.DisplayNameFor(x => x.Age): @Html.DisplayFor(x => x.Age)
+</p>
+
+@Html.ActionLink("Edytuj dane", "Edit person", "People", new { person = Model });
