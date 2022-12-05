@@ -1,4 +1,6 @@
-﻿using FirstProjectAsp.Models;
+﻿using FirstProjectAsp.DataBase.Context;
+using FirstProjectAsp.DataBase.Entities;
+using FirstProjectAsp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,14 +11,50 @@ namespace FirstProjectAsp.Controllers
 {
     public class PeopleController : Controller
     {
+        private PeopleDBContext peopleDBContext = new PeopleDBContext();
+
         public IActionResult Index()
         {
             return View();
         }
 
+        public IActionResult CreatePerson()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreatePerson(PersonDTO personDTO)
+        {
+            peopleDBContext.Add(new Person()
+            {
+                Name = personDTO.Name,
+                Surname = personDTO.Surname,
+                Age = personDTO.Age
+            });
+            peopleDBContext.SaveChanges();
+
+            return View("Index");
+        }
+
+        public IActionResult ShowAllPersons()
+        {
+            List<PersonDTO> allPersonList = peopleDBContext.Persons.
+                Select(p => new PersonDTO()
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Surname = p.Surname,
+                    Age = p.Age
+                })
+                .ToList();
+
+            return View(allPersonList);
+        }
+
         public IActionResult ViewPerson()
         {
-            Person person = new Person()
+            PersonDTO person = new PersonDTO()
             {
                 Name = "Jan",
                 Surname = "Kowalski",
@@ -26,11 +64,10 @@ namespace FirstProjectAsp.Controllers
             return View(person);
         }
 
-        public IActionResult EditPerson(Person person)
+        //[HttpPost]
+        public IActionResult EditPerson(PersonDTO person)
         {
-
-
-            return View();
+            return View(person);
         }
     }
 }

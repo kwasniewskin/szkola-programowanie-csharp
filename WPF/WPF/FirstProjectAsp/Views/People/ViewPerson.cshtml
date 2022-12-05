@@ -1,4 +1,4 @@
-﻿@model Person
+﻿@model PersonDTO
 
 
 <h1>Witaj uzytkowniku: </h1>
@@ -8,4 +8,4 @@
     @Html.DisplayNameFor(x => x.Age): @Html.DisplayFor(x => x.Age)
 </p>
 
-@Html.ActionLink("Edytuj dane", "Edit person", "People", new { person = Model });
+@Html.ActionLink("Edytuj dane", "EditPerson", "People", new { person = Model}, FormMethod.Post);

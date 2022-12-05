@@ -1,0 +1,11 @@
+﻿@model PersonDTO
+
+<h1>Dodanie nowej osoby do bazy</h1>
+
+@using(Html.BeginForm("CreatePerson", "People", FormMethod.Post)) 
+{ 
+    <div>@Html.DisplayNameFor(x => x.Name) @Html.TextBoxFor(x => x.Name) </div>
+    <div>@Html.DisplayNameFor(x => x.Surname) @Html.TextBoxFor(x => x.Surname) </div>
+    <div>@Html.DisplayNameFor(x => x.Age) @Html.TextBoxFor(x => x.Age) </div>
+    <input type="submit" value="Dodaj Osobe"/>
+}

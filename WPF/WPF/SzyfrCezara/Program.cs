@@ -20,7 +20,7 @@ namespace SzyfrCezara
 
                 for(int i = 0; 1 < wyraz.Length; i++)
                 {
-                    wyraz[i]
+                    //wyraz[i];
 
                 }
             }
