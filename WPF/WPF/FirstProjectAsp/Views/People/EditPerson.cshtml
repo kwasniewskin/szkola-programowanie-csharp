@@ -2,8 +2,9 @@
 
 <h1>Edycja osoby</h1>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("EditPerson", "People", FormMethod.Post)) 
 { 
+    @Html.HiddenFor(x => x.Id)
     <p>Imie: @Html.TextBoxFor(x => x.Name)</p>
     <p>Nazwisko: @Html.TextBoxFor(x => x.Surname)</p>
     <p>Wiek: @Html.TextBoxFor(x => x.Age)</p>
